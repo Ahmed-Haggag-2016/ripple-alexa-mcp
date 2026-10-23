@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111512" />
+    <meta name="description" content="Ripple coordinates the knock-on effects of a disrupted plan—with your approval before any action." />
+    <title>Ripple — one problem, every consequence handled</title>
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem("ripple-theme-v1") === "light" ? "light" : "dark";
+      } catch (error) {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=4" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Ripple home">
+          <span class="brand-mark" aria-hidden="true">◉</span>
+          <span>ripple<span class="brand-period">.</span></span>
+        </a>
+        <div class="topbar-status">
+          <span class="demo-pill"><span></span> SIMULATION</span>
+          <a class="logs-link" href="/logs" target="_blank" rel="noopener">Logs <span aria-hidden="true">↗</span></a>
+          <button class="theme-button" id="theme-toggle" type="button" aria-label="Switch to light theme">☼ <span>Light mode</span></button>
+          <button class="mcp-status" id="mcp-status" type="button" aria-live="polite"><span class="status-dot"></span><span id="mcp-status-label">MCP · CONNECTING</span></button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> YOUR LIFE, RECONNECTED</p>
+            <h1>One problem.<br /><span>Every consequence handled.</span></h1>
+            <p class="hero-description">Ripple goes beyond alerts: it traces which commitments are affected, checks recovery options against your constraints, and gives you a plan to review, approve, and verify one step at a time.</p>
+          </div>
+          <div class="flight-card scenario-preview" aria-live="polite">
+            <div class="flight-top">
+              <span class="flight-label">SCENARIO PREVIEW</span>
+              <span class="alert-pill"><span class="alert-dot" aria-hidden="true"></span><span id="scenario-status">PICKUP AT RISK</span></span>
+            </div>
+              <h2 id="scenario-card-title">Pickup at risk</h2>
+              <p id="scenario-card-detail">A delayed commute threatens a school pickup deadline. Compare a backup contact and a mock ride.</p>
+            <div class="scenario-preview-note"><span aria-hidden="true">⌑</span> Nothing changes without your approval</div>
+            <span id="flight-delay-label" hidden></span>
+          </div>
+        </section>
+
+        <section class="story-section" aria-labelledby="story-title">
+          <div class="section-heading story-heading">
+            <div>
+              <p class="eyebrow">WHY RIPPLE · HOW TO USE IT</p>
+              <h2 id="story-title">Recover what matters—not just react to what changed.</h2>
+              <p class="section-subtitle">Ripple connects the disruption to the commitments it threatens, filters out options that break your limits, and keeps you in control of every action.</p>
+            </div>
+          </div>
+          <div class="story-grid">
+            <article class="story-card">
+              <div class="story-copy">
+                <span class="story-kicker">THE PURPOSE</span>
+                <h3>See the knock-on effects before they become surprises.</h3>
+                <p>A late flight can put a pickup, dinner, groceries, and reminders at risk. Ripple shows what is affected and why each item may need attention.</p>
+              </div>
+              <img
+                class="story-animation"
+                src="/assets/ripple-purpose.gif"
+                alt="Animated example: a delayed flight ripples into dinner, pickup, groceries, and reminders."
+                width="840"
+                height="460"
+                loading="lazy"
+              />
+            </article>
+            <article class="story-card">
+              <div class="story-copy">
+                <span class="story-kicker">THE WORKFLOW</span>
+                <h3>A recovery plan, not an autopilot.</h3>
+                <p>Compare options against your deadline, budget, and priorities. Approve or decline each proposed action yourself, then inspect its verified result.</p>
+              </div>
+              <img
+                class="story-animation"
+                src="/assets/ripple-how-to.gif"
+                alt="Animated walkthrough: tell Ripple what changed, review the plan, approve one action, and verify its result."
+                width="840"
+                height="460"
+                loading="lazy"
+              />
+            </article>
+          </div>
+        </section>
+
+        <section class="control-room" aria-labelledby="control-room-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">MCP CONTROL ROOM</p><h2 id="control-room-title">See what Ripple can actually use.</h2><p class="section-subtitle">The browser connects to one local MCP server. Its discovered tools power these simulated service modules; they are not live external accounts.</p></div>
+            <span class="control-server-status" id="control-server-status">MCP · DISCOVERING</span>
+          </div>
+          <div class="service-board" id="service-board" aria-live="polite">
+            <p class="empty-activity">Service modules appear here after MCP tool discovery.</p>
+          </div>
+          <p class="control-room-note">Toggle a mock module to see the planner omit actions it cannot safely perform. Reconnect is simulated per module; the MCP server connection itself remains shared.</p>
+        </section>
+
+        <section class="workbench" aria-labelledby="scenario-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">CHOOSE WHAT CHANGED</p><h2 id="scenario-title">Try a different disruption.</h2></div>
+            <button class="quiet-button" id="reset-scenario" type="button">Reset demo ↺</button>
+          </div>
+          <div class="scenario-layout">
+            <section class="request-panel" aria-labelledby="request-title">
+              <div class="panel-label"><span class="step-number">01</span><div><strong>Tell Ripple what changed</strong><span>Speak or type. This is a simulated scenario.</span></div></div>
+              <div class="scenario-picker" role="group" aria-label="Choose a disruption scenario">
+                <button class="scenario-choice selected" type="button" data-scenario="pickup_risk" aria-pressed="true">Pickup at risk</button>
+                <button class="scenario-choice" type="button" data-scenario="flight_delay" aria-pressed="false">Flight delayed</button>
+                <button class="scenario-choice" type="button" data-scenario="flight_cancelled" aria-pressed="false">Flight cancelled</button>
+                <button class="scenario-choice" type="button" data-scenario="delivery_disruption" aria-pressed="false">Delivery late</button>
+                <button class="scenario-choice" type="button" data-scenario="meeting_overrun" aria-pressed="false">Meeting overrun</button>
+              </div>
+              <details class="scenario-settings">
+                <summary>Adjust the scenario data</summary>
+                <div class="settings-grid">
+                  <label id="delay-setting">Commute delay (minutes)
+                    <input id="delay-minutes" type="number" min="0" max="360" step="5" value="40" />
+                  </label>
+                  <div class="pickup-settings" id="pickup-settings" hidden>
+                    <label>Pickup deadline
+                      <select id="pickup-deadline">
+                        <option>5:45 PM</option>
+                        <option selected>6:00 PM</option>
+                        <option>6:15 PM</option>
+                      </select>
+                    </label>
+                    <label>Maximum transport budget
+                      <select id="pickup-budget">
+                        <option value="0">$0</option>
+                        <option value="10">$10</option>
+                        <option value="25" selected>$25</option>
+                        <option value="50">$50</option>
+                      </select>
+                    </label>
+                    <label>What matters most?
+                      <select id="pickup-priority">
+                        <option value="lowest_cost" selected>Spend less</option>
+                        <option value="arrival_buffer">Arrive with more time to spare</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="non-pickup-settings" id="non-pickup-settings">
+                    <label>Dinner alternative
+                      <select id="dinner-option">
+                        <option value="0">8:45 PM · Cedar Table</option>
+                        <option value="1">9:15 PM · Cedar Table</option>
+                      </select>
+                    </label>
+                    <label class="setting-check"><input id="keep-dinner" type="checkbox" checked /> Protect dinner from cancellation</label>
+                    <label class="setting-check"><input id="delivery-provider-available" type="checkbox" checked /> Primary delivery provider available</label>
+                    <label class="setting-check"><input id="delivery-backup-available" type="checkbox" checked /> Backup delivery provider available</label>
+                  </div>
+                </div>
+                <p>These inputs configure the mock scenario. Your priority shapes Ripple’s recommendation, but you choose the option and approve any action.</p>
+              </details>
+              <label class="sr-only" for="request-input">Describe the disruption and what matters to you</label>
+              <textarea id="request-input" rows="3" maxlength="280">My train is delayed by 40 minutes. I need to pick up Sam by 6:00 PM. Find options under $25.</textarea>
+              <div class="request-actions">
+                <button class="mic-button" id="voice-input" type="button" aria-label="Speak your request">♩ <span>Speak</span></button>
+                <button class="primary-button" id="build-plan" type="button">Find the ripple effects <span>→</span></button>
+              </div>
+              <p class="voice-note" id="voice-note" aria-live="polite">Voice input uses your browser’s speech recognition when available.</p>
+              <div class="constraint-note"><span class="lock-icon">⌑</span><span><strong>Protected by your preferences</strong><br /><span id="constraint-preview">Keep dinner · Ask before sending messages</span></span></div>
+            </section>
+
+            <section class="impact-panel" aria-labelledby="impact-title">
+              <div class="panel-label"><span class="step-number">02</span><div><strong id="impact-title">What may be affected</strong><span>Ripple checks connected mock services.</span></div></div>
+              <div class="impact-list" id="impact-list">
+                <article class="impact-item" data-service="Calendar"><span class="impact-icon calendar-icon">▦</span><span><strong>Calendar</strong><small>Read tonight’s commitments</small></span><span class="impact-state">WAITING</span></article>
+                <article class="impact-item" data-service="Delivery"><span class="impact-icon delivery-icon">□</span><span><strong>Delivery</strong><small>Check the grocery window</small></span><span class="impact-state">WAITING</span></article>
+                <article class="impact-item" data-service="Travel"><span class="impact-icon travel-icon">✈</span><span><strong>Travel</strong><small>Check the flight status</small></span><span class="impact-state">WAITING</span></article>
+                <article class="impact-item" data-service="Reservations"><span class="impact-icon reservation-icon">◷</span><span><strong>Reservations</strong><small>Find dinner alternatives</small></span><span class="impact-state">WAITING</span></article>
+                <article class="impact-item" data-service="Messaging"><span class="impact-icon calendar-icon">✉</span><span><strong>Messaging</strong><small>Drafts require your approval</small></span><span class="impact-state">WAITING</span></article>
+              </div>
+              <section class="pickup-options-panel" id="pickup-options-panel" hidden aria-labelledby="pickup-options-title">
+                <p class="eyebrow">MCP PICKUP ASSESSMENT</p>
+                <h3 id="pickup-options-title">Compare deadline-safe options</h3>
+                <p id="pickup-risk-summary"></p>
+                <div class="pickup-recommendation" id="pickup-recommendation" hidden>
+                  <span class="pickup-recommendation-label">RIPPLE’S MATCH · BASED ON YOUR PRIORITY</span>
+                  <p id="pickup-recommendation-reason"></p>
+                  <p class="pickup-tradeoff" id="pickup-tradeoff" hidden></p>
+                </div>
+                <div class="pickup-option-list" id="pickup-option-list"></div>
+                <p class="pickup-mock-note">Options, availability, and estimates are simulated. Ripple’s recommendation is guidance, not an action; choose either eligible option. Nothing is sent or booked during comparison.</p>
+                <button class="primary-button" id="prepare-pickup-plan" type="button">Prepare approval request →</button>
+              </section>
+            </section>
+          </div>
+        </section>
+
+        <section class="plan-section" id="plan-section" hidden aria-labelledby="plan-title">
+          <div class="section-heading plan-heading">
+            <div><p class="eyebrow">YOUR RECOVERY PLAN</p><h2 id="plan-title">Review before anything changes.</h2><p class="section-subtitle" id="plan-summary"></p><span class="plan-priority" id="plan-priority" hidden></span></div>
+            <span class="approval-required">⌑ APPROVAL REQUIRED</span>
+          </div>
+          <div class="plan-layout">
+            <div class="plan-actions" id="plan-actions"></div>
+            <aside class="constraints-panel">
+              <p class="eyebrow">YOUR CONSTRAINTS</p>
+              <ul id="constraints-list"></ul>
+              <p class="mock-disclaimer">These are mock integrations. No real reservation, calendar, delivery, or message is changed.</p>
+              <p class="decision-hint">Decide each proposal separately. Ripple will execute or record your decision, then verify that action before you decide on the next one.</p>
+            </aside>
+          </div>
+          <div class="plan-blockers" id="plan-blockers" hidden></div>
+          <section class="impact-map" aria-labelledby="impact-map-title">
+            <div class="impact-map-heading"><div><p class="eyebrow">RIPPLE IMPACT MAP</p><h3 id="impact-map-title">From disruption to verified outcome</h3></div><span>Updated by MCP tool results</span></div>
+            <div class="impact-map-flow" id="impact-map-flow">
+              <p>Build a plan to map service data to the actions it affects.</p>
+            </div>
+          </section>
+          <div class="execution-summary" id="execution-summary" role="status" aria-live="polite" hidden></div>
+        </section>
+
+        <footer class="footer">
+          <span><strong>RIPPLE</strong> · One problem. Every consequence handled.</span>
+          <span>Hackathon simulation only. No live services or real-world actions.</span>
+        </footer>
+      </main>
+    </div>
+    <script src="mcp-client.js?v=2"></script>
+    <script src="app.js?v=4"></script>
+  </body>
+</html>

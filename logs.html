@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111512" />
+    <meta name="description" content="Inspect Ripple's MCP tool requests and results." />
+    <title>Ripple Logs · MCP activity</title>
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem("ripple-theme-v1") === "light" ? "light" : "dark";
+      } catch (error) {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=4" />
+  </head>
+  <body>
+    <div class="app-shell logs-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Return to Ripple">
+          <span class="brand-mark" aria-hidden="true">◉</span>
+          <span>ripple<span class="brand-period">.</span></span>
+        </a>
+        <div class="topbar-status">
+          <a class="logs-link" href="/">← Back to Ripple</a>
+          <button class="theme-button" id="logs-theme-toggle" type="button" aria-label="Switch theme">☼ <span>Light mode</span></button>
+        </div>
+      </header>
+
+      <main class="logs-main">
+        <section class="logs-intro">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> THE PROOF, NOT JUST THE PROMISE</p>
+            <h1>Ripple <span>Logs</span></h1>
+            <p class="hero-description">Inspect the MCP requests Ripple sends and the results the server returns. These records come from the current browser and update while this page is open.</p>
+          </div>
+          <span class="protocol-tag">STREAMABLE HTTP · 2025-11-25</span>
+        </section>
+
+        <ol class="mcp-workflow">
+          <li><strong>Prepare context</strong><span>Configure the scenario and retrieve related mock service data in one call.</span></li>
+          <li><strong>Propose</strong><span>Build a reviewable plan. This step does not execute actions.</span></li>
+          <li><strong>Decide, execute, verify</strong><span>Each action is approved or declined separately and checked with MCP.</span></li>
+        </ol>
+
+        <section class="logs-panel" aria-labelledby="logs-title">
+          <div class="logs-toolbar">
+            <div>
+              <p class="eyebrow">MCP ACTIVITY</p>
+              <h2 id="logs-title">Tool requests &amp; results</h2>
+              <p class="section-subtitle" id="logs-count" aria-live="polite">Loading saved activity…</p>
+            </div>
+            <button class="quiet-button logs-clear" id="clear-logs" type="button">Clear logs</button>
+          </div>
+          <div class="logs-feedback" id="logs-feedback" role="status" aria-live="polite"></div>
+          <div class="activity-feed" id="activity-feed" role="log" aria-live="polite">
+            <div class="empty-activity"><span>◌</span><p>No MCP activity yet. Use Ripple to build a plan; requests and results will appear here.</p></div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <span><strong>RIPPLE LOGS</strong> · Mock service data only</span>
+          <span>Saved in this browser; clearing site data removes these records.</span>
+        </footer>
+      </main>
+    </div>
+    <script src="logs.js?v=2"></script>
+  </body>
+</html>

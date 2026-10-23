@@ -1,0 +1,3 @@
+# Python dependencies for the Ripple server and MCP integration tests.
+# pip installs the MCP SDK's required Python dependencies automatically.
+mcp==1.30.0
